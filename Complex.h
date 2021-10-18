@@ -1,6 +1,6 @@
 // Complex.h
 
-using namespace.std
+using namespace std;
 
 class Complex {
 
@@ -22,7 +22,7 @@ class Complex {
  //member functions
  double mag( double re, double im ){} //complex number magnitude
  double phase( double re, double im ){} //complex number phase
- void print(const std::string& text) const;
+ void print() const;
  
  //overloading operations betw complex numbers
 
