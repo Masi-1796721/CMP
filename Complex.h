@@ -3,7 +3,7 @@ class Complex {
  public:
 
   //constructors
-  Complex(); //default
+  Complex(); //default 
   Complex(double re, double im); //regular
   Complex(const Complex& complex); //copy
  ~Complex(); //destructor
