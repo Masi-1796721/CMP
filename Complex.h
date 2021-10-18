@@ -1,3 +1,7 @@
+// Complex.h
+
+using namespace.std
+
 class Complex {
 
  public:
@@ -18,6 +22,7 @@ class Complex {
  //member functions
  double mag( double re, double im ){} //complex number magnitude
  double phase( double re, double im ){} //complex number phase
+ void print(const std::string& text) const;
  
  //overloading operations betw complex numbers
 
