@@ -1,6 +1,8 @@
 #include <Complex.h>
 #include <iostream>
-#include <>
+#include <cmath>
+
+using namespace std;
 
 //constructors definition
 Complex::Complex(){ //default
@@ -18,10 +20,12 @@ Complex::Complex(const Complex& complex){ //copy
  im_=complex.im_;
 };
 
+//destructor definition
 Complex::~Complex(){
  
 }
 
+//methods definition
 double Complex::mag(double re, double im){
  mag = sqrt( re*re + im*im );
  return mag;
@@ -30,4 +34,9 @@ double Complex::mag(double re, double im){
 double Complex::phase(){
  phase = atan( im/re );
  return phase;
+}
+
+void Complex::print() const{
+ cout<<"re:"<<re_
+  <<"\tim:"<<im_<<endl;
 }
