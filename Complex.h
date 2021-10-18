@@ -3,13 +3,21 @@ class Complex {
  public:
 
   //constructors
-  Complex();
-  Complex(double x, double y);
-  Complex(const Complex& complex);
+  Complex(); //default
+  Complex(double x, double y); //regular
+  Complex(const Complex& complex); //copy
+ 
+ //getters
+ double re() const { return re_; }
+ double im() const { return im_; }
  
  //setters
- void SetRe(double re){};
- void SetIm(double im){};
+ void SetRe( double re ){ re_=re; }
+ void SetIm( double im ){ im_=im; }
+ 
+ //member functions
+ mag()
+ phase()
 
  private:
   double re_;
