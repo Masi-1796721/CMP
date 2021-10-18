@@ -22,8 +22,9 @@ Complex::Complex(const Complex& complex){ //copy
 
 //destructor definition
 Complex::~Complex(){
- 
-}
+cout << "Complex::~Complex() called for Complex “
+<< complex_ << endl;
+};
 
 //methods definition
 double Complex::mag(double re, double im){
