@@ -1,5 +1,6 @@
 #include <Complex.h>
 #include <iostream>
+#include <>
 
 //constructors definition
 Complex::Complex(){ //default
@@ -17,6 +18,16 @@ Complex::Complex(const Complex& complex){ //copy
  im_=complex.im_;
 }
 
-double Complex::mag(double re, double im){
+Complex::~Complex(){
  
+}
+
+double Complex::mag(double re, double im){
+ mag = sqrt( re*re + im*im );
+ return mag;
+}
+
+double Complex::phase(){
+ phase = atan( im/re );
+ return phase;
 }
