@@ -4,6 +4,7 @@ class Complex {
 
   //constructors
   Complex(); //default
+ ~Complex();
   Complex(double re, double im); //regular
   Complex(const Complex& complex); //copy
  
