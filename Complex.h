@@ -16,8 +16,8 @@ class Complex {
  void SetIm( double im ){ im_=im; }
  
  //member functions
- mag()
- phase()
+ double mag( double re, double im ){} //complex number magnitude
+ double phase( double re, double im ){} //complex number phase
 
  private:
   double re_;
