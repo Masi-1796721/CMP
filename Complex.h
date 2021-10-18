@@ -18,6 +18,8 @@ class Complex {
  //member functions
  double mag( double re, double im ){} //complex number magnitude
  double phase( double re, double im ){} //complex number phase
+ 
+ //overloading operations betw complex numbers
 
  private:
   double re_;
