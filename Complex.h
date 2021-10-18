@@ -4,10 +4,9 @@ class Complex {
 
   //constructors
   Complex(); //default
- ~Complex();
   Complex(double re, double im); //regular
   Complex(const Complex& complex); //copy
- 
+ ~Complex(); //destructor
  //getters
  double re() const { return re_; }
  double im() const { return im_; }
