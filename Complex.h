@@ -11,6 +11,7 @@ class Complex {
   Complex(double re, double im); //regular
   Complex(const Complex& complex); //copy
  ~Complex(); //destructor
+ 
  //getters
  double re() const { return re_; }
  double im() const { return im_; }
@@ -20,8 +21,8 @@ class Complex {
  void SetIm( double im ){ im_=im; }
  
  //member functions
- double mag( double re, double im ){} //complex number magnitude
- double phase( double re, double im ){} //complex number phase
+ double mag(); //complex number magnitude
+ double phase(); //complex number phase
  void print() const;
  
  //overloading operations betw complex numbers
@@ -29,4 +30,5 @@ class Complex {
  private:
   double re_;
   double im_;
+ 
 };
