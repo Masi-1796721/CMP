@@ -16,3 +16,7 @@ Complex::Complex(const Complex& complex){ //copy
  re_=complex.re_;
  im_=complex.im_;
 }
+
+double Complex::mag(double re, double im){
+ 
+}
