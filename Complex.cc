@@ -1,4 +1,6 @@
-#include <Complex.h>
+// Complex.cc
+
+#include "Complex.h"
 #include <iostream>
 #include <cmath>
 
@@ -22,19 +24,21 @@ Complex::Complex(const Complex& complex){ //copy
 
 //destructor definition
 Complex::~Complex(){
-cout << "Complex::~Complex() called for Complex “
+cout << "Complex::~Complex() called for Complex"
 << complex_ << endl;
 };
 
 //methods definition
-double Complex::mag(double re, double im){
- mag = sqrt( re*re + im*im );
- return mag;
+double Complex::mag(){
+ double r = sqrt( re_*re_ + im_*im_ );
+ cout<<"magnitude:"<<r<<endl;
+ return re;
 }
 
 double Complex::phase(){
- phase = atan( im/re );
- return phase;
+ double phi = atan( im_/re_ );
+ cout<<"phase:"<<phi<<endl;
+ return phi;
 }
 
 void Complex::print() const{
