@@ -22,17 +22,11 @@ Complex::Complex(const Complex& complex){ //copy
  im_=complex.im_;
 };
 
-//destructor definition
-Complex::~Complex(){
-cout << "Complex::~Complex() called for Complex"
-<< complex_ << endl;
-};
-
 //methods definition
 double Complex::mag(){
  double r = sqrt( re_*re_ + im_*im_ );
  cout<<"magnitude:"<<r<<endl;
- return re;
+ return r;
 }
 
 double Complex::phase(){
@@ -42,6 +36,68 @@ double Complex::phase(){
 }
 
 void Complex::print() const{
- cout<<"re:"<<re_
-  <<"\tim:"<<im_<<endl;
+ cout<<""<<re_
+  <<" + i"<<im_<<endl;
 }
+
+//overloaded operations betw complex numbers definition
+
+Complex Complex::operator+(const Complex& rhs) const {
+  
+  //sum of real parts
+  double re = re_ + rhs.re_;
+  //sum of imaginary parts
+  double im = im_ + rhs.im_;
+  
+  //result
+  return Complex(re, im);
+
+}
+
+Complex Complex::operator-(const Complex& rhs) const {
+  
+  //subtraction of real parts
+  double re = re_ - rhs.re_;
+  //subtraction of imaginary parts
+  double im = im_ - rhs.im_;
+  
+  //result
+  return Complex(re, im);
+
+}
+
+Complex Complex::operator/(const Complex& rhs) const {
+  
+  //division rule implementation
+  double re = (re_*rhs.re_ + im_*rhs.im_)/(rhs.re_*rhs.re_ + rhs.im_*rhs.im_);
+  double im = (im_*rhs.re_ - re_*rhs.im_)/(rhs.re_*rhs.re_ + rhs.im_*rhs.im_);
+  
+  //result
+  return Complex(re, im);
+  
+}
+  
+Complex Complex::operator*(const Complex& rhs) const {
+  
+  //product rule implementation
+  double re = re_*rhs.re_ - im_*rhs.im_;
+  double im = re_*rhs.im_ + im_*rhs.re_;
+  
+  //result
+  return Complex(re, im);
+  
+}
+  
+Complex Complex::operator*(const double& rhs) const {
+
+  return Complex(re_*rhs, im_*rhs);
+  
+}
+
+//global funcion(friend method) for double*complex
+Complex operator*(const double& lhs, const Complex& rhs){
+  
+  return Complex(lhs*rhs.re_, lhs*rhs.im_);
+
+}
+
