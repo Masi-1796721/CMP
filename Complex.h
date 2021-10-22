@@ -10,26 +10,33 @@ class Complex {
   Complex(); //default 
   Complex(double re, double im); //regular
   Complex(const Complex& complex); //copy
- ~Complex(); //destructor
+  ~Complex() {}; //destructor
  
- //getters
- double re() const { return re_; }
- double im() const { return im_; }
+  //getters
+  double re() const { return re_; }
+  double im() const { return im_; }
  
- //setters
- void SetRe( double re ){ re_=re; }
- void SetIm( double im ){ im_=im; }
+  //setters
+  void SetRe( double re ){ re_=re; }
+  void SetIm( double im ){ im_=im; }
  
- //member functions
- double mag(); //complex number magnitude
- double phase(); //complex number phase
- void print() const;
+  //other member functions
+  double mag(); //complex number magnitude
+  double phase(); //complex number phase
+  void print() const;
  
- //overloading operations betw complex numbers
- 
+  //overloading operations betw complex numbers
+  Complex operator+(const Complex& rhs) const; //sum betw two complexes
+  Complex operator-(const Complex& rhs) const; //subtraction betw two complexes
+  Complex operator/(const Complex& rhs) const; //division betw two complexes
+  
+  Complex operator*(const Complex& rhs) const; //product betw two complexes
+  Complex operator*(const double& rhs) const; //complex*double
+  friend Complex operator*(const double& lhs, const Complex& rhs); //double*complex
 
  private:
   double re_;
   double im_;
  
 };
+
