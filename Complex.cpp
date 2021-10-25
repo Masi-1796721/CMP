@@ -42,6 +42,22 @@ int main(){ //main
   cout<<"multiplication result: ";
   c8.print();
   
+  c2+=c1;
+  cout << "c2+=c1. c2=";
+  c2.print();
+  c2-=c1;
+  cout << "c2-=c1. c2=";
+  c2.print();
+  c2*=c1;
+  cout<<"c2*=c1. c2=";
+  c2.print();
+  c2/=c1;
+  cout<<"c2/=c1. c2=";
+  c2.print();
+  c2=c1;
+  cout<<"c2=c1. c2=";
+  c2.print();
+  
   return 0;
   
 }
