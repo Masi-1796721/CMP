@@ -41,7 +41,6 @@ class Complex {
   Complex operator*(const Complex& rhs) const; //product betw two complexes
   Complex operator*(const double& rhs) const; //complex*double
   friend Complex operator*(const double& lhs, const Complex& rhs); //double*complex
-  //friend ostream& operator<<(ostream& os, const Datum& rhs);
 
  private:
   double re_;
