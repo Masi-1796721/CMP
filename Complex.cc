@@ -135,16 +135,10 @@ Complex Complex::operator*(const double& rhs) const {
   
 }
 
-//global funcion(friend method) for double*complex and for << operator
+//global funcion(friend method) for double*complex
 Complex operator*(const double& lhs, const Complex& rhs){
   
   return Complex(lhs*rhs.re_, lhs*rhs.im_);
 
 }
-
-/*ostream& operator<<(ostream& os, const Datum& rhs){
-  using namespace std;
-  os << rhs.value_ << " +/- " << rhs.error_; // NB: no endl!
-  return os;
-}*/
 
