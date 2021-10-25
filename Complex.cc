@@ -29,10 +29,18 @@ double Complex::mag(){
  return r;
 }
 
+void Complex::r(){
+ this->mag();
+}
+
 double Complex::phase(){
  double phi = atan( im_/re_ );
  cout<<"phase:"<<phi<<endl;
  return phi;
+}
+
+void Complex::phi(){
+ this->phase();
 }
 
 void Complex::print() const{
