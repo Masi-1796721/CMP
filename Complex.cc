@@ -84,7 +84,40 @@ Complex Complex::operator/(const Complex& rhs) const {
   return Complex(re, im);
   
 }
+
+const Complex& Complex::operator=(const Complex& rhs) {
+  re_ = rhs.re_;
+  im_ = rhs.im_;
   
+  return *this;
+}
+
+const Complex& Complex::operator+=(const Complex& rhs) {
+  re_ += rhs.re_;
+  im_ += rhs.im_;
+  
+  return *this;
+}
+
+const Complex& Complex::operator-=(const Complex& rhs) {
+  re_ -= rhs.re_;
+  im_ -= rhs.im_;
+  
+  return *this;
+}
+
+const Complex& Complex::operator*=(const Complex& rhs) {
+  re_ = re_*rhs.re_ - im_*rhs.im_;
+  im_ = re_*rhs.im_ + im_*rhs.re_;
+  return *this;
+}
+
+const Complex& Complex::operator/=(const Complex& rhs) {
+  re_ = (re_*rhs.re_ + im_*rhs.im_)/(rhs.re_*rhs.re_ + rhs.im_*rhs.im_);
+  im_ = (im_*rhs.re_ - re_*rhs.im_)/(rhs.re_*rhs.re_ + rhs.im_*rhs.im_);
+  return *this;
+}
+
 Complex Complex::operator*(const Complex& rhs) const {
   
   //product rule implementation
@@ -102,10 +135,16 @@ Complex Complex::operator*(const double& rhs) const {
   
 }
 
-//global funcion(friend method) for double*complex
+//global funcion(friend method) for double*complex and for << operator
 Complex operator*(const double& lhs, const Complex& rhs){
   
   return Complex(lhs*rhs.re_, lhs*rhs.im_);
 
 }
+
+/*ostream& operator<<(ostream& os, const Datum& rhs){
+  using namespace std;
+  os << rhs.value_ << " +/- " << rhs.error_; // NB: no endl!
+  return os;
+}*/
 
