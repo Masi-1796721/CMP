@@ -32,9 +32,16 @@ class Complex {
   Complex operator-(const Complex& rhs) const; //subtraction betw two complexes
   Complex operator/(const Complex& rhs) const; //division betw two complexes
   
+  const Complex& operator=(const Complex& rhs);
+  const Complex& operator+=(const Complex& rhs);
+  const Complex& operator-=(const Complex& rhs);
+  const Complex& operator*=(const Complex& rhs);
+  const Complex& operator/=(const Complex& rhs);
+  
   Complex operator*(const Complex& rhs) const; //product betw two complexes
   Complex operator*(const double& rhs) const; //complex*double
   friend Complex operator*(const double& lhs, const Complex& rhs); //double*complex
+  //friend ostream& operator<<(ostream& os, const Datum& rhs);
 
  private:
   double re_;
