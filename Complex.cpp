@@ -10,7 +10,9 @@ int main(){ //main
   //print data
   c1.print();
   c1.mag();
+  c1.r();
   c1.phase();
+  c1.phi();
   c2.print();
   c2.mag();
   c2.phase();
