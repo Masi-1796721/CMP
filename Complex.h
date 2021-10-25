@@ -22,7 +22,9 @@ class Complex {
  
   //other member functions
   double mag(); //complex number magnitude
+  void r();
   double phase(); //complex number phase
+  void phi();
   void print() const;
  
   //overloading operations betw complex numbers
