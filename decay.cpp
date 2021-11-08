@@ -1,11 +1,11 @@
 //randomly simulate 10^4 events -> I distinguish when generating random angles (?)
 
-#include "TLorentzVector.h"
-#include "TMath.h"
-
 #include <iostream>
 
-// ROOT header files: random numbers, plotting, file storage
+// ROOT header files: Lorentz vector, random numbers, plotting, file storage
+
+#include "TLorentzVector.h"
+#include "TMath.h"
 #include "TRandom3.h"
 #include "TH1F.h"
 #include "TCanvas.h"
@@ -51,38 +51,35 @@ int main() {
   // ...exploiting the machine clock for the seed
   gen->SetSeed(0);
   // # events
-  int nsig = 10000;
+  int nsig = 10;//per ora 10
   
   // 4-momentum of the pion in the B rest frame (center of mass of the B meson)
   double p_Pi = sqrt((m_B_2*m_B_2 + m_Pi_2*m_Pi_2 + m_K_2*m_K_2 -2*m_B_2*m_Pi_2 -2*m_B_2*m_K_2 -2*m_Pi_2*m_K_2)/(2*m_B_2));
   
   // 4-momentum of the kaon in the B rest frame (equal to the pion)
   double p_K = p_Pi;
- 
+  
   // Once I have the module of the momentum, I generate the random directions for te two particles
   double point_Pi, point_K;
+  double *x, *y, *z, r=1, theta_Pi, phi_Pi, theta_K, phi_K;
+  
   // Loop on the 10000 events
   for(int i=0; i<nsig; ++i) {
 
     // Genarate random point in spherical coordinates for pion
     point_Pi = gen.Sphere(); //vedere che raggio mettere
+    theta_Pi = atan(*y / *x);
+    phi_Pi = acos(*z / r);
+    cout<<""<<theta_Pi<<""<<phi_Pi<<endl;//per ora
     // Generate random point in spherical coordinates for kaon
     point_K = gen.Sphere();
+    theta_K = atan(*y / *x);
+    phi_K = (*z / r);
+    cout<<""<<theta_K<<""<<phi_K<<endl;//per ora
 
-    //save values in file
-
-  }
-  
-  
-  // Flat metric, (+ - - -) signature: m^2 = E^2 - p^2
-  Pi.SetPxPyPzE(p_Pi, 0, 0, sqrt(p_Pi*p_Pi+m_Pi_2));
-  
-  
-  
-  // Flat metric, (+ - - -) signature: m^2 = E^2 - p^2
-  K.SetPxPyPzE(p_K, 0, 0, sqrt(p_K*p_K+m_K_2));
-  
-  
+    //save values in a file
+    
+  } 
   
   // Delete the random generator now we are done with it
   // [We had new, here is delete!]
@@ -101,32 +98,7 @@ int main() {
      * eta is the PSEUDORAPIDITY: eta = -ln[tan(theta/2)]; differences in eta
        are Lorentz invariants under boosts along the longitudinal axis
   */
-  cout << "--> LAB p4 B: " << endl;
-  p4_B.Print();
-  cout << "--> CoM p4 pi*: " << endl;
-  p4_pi.Print();
 
-  // The TLorentzVector class provides the Beta() and Gamma() methods to
-  // compute the boost parameters: we compare them to their definitions
-  cout << "--> boost parameters of B reference frame" << endl;
-  cout << "\t beta: " << p4_B.Beta() << "\t"
-       << "\t p/E:" << p4_B.P()/p4_B.E() << "\n"
-       << "\t gamma: " << p4_B.Gamma() << "\t"
-       << "\t E/m: " << p4_B.E()/m_B << "\n"
-       << "\t beta*gamma: " << p4_B.Beta()*p4_B.Gamma() << "\t"
-       << "\t p/m: " << p_B/m_B
-       << endl;
-
-  // Boost parameters of the B frame in the LAB frame can be accessed
-  // with the BoostVector method
-  cout << "--> boost vector of the B meson" << endl;
-  p4_B.BoostVector().Print();
-
-  // Let's boost the pion to the LAB frame
-  cout << "--> now boost the pion to LAB" << endl;
-  p4_pi.Boost(p4_B.BoostVector());
-  cout << "--> LAB p4 pi: " << endl;
-  p4_pi.Print();
 
   // Exit
   return 0;
