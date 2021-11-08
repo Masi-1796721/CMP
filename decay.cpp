@@ -58,22 +58,20 @@ int main() {
   
   // 4-momentum of the kaon in the B rest frame (equal to the pion)
   double p_K = p_Pi;
-  
+ 
   // Once I have the module of the momentum, I generate the random directions for te two particles
-  double theta, phi;
+  double point_Pi, point_K;
   // Loop on the 10000 events
   for(int i=0; i<nsig; ++i) {
 
     // Genarate random point in spherical coordinates for pion
-    theta = gen.Sphere(); //vedere che raggio mettere
+    point_Pi = gen.Sphere(); //vedere che raggio mettere
     // Generate random point in spherical coordinates for kaon
-    phi = gen.Sphere();
+    point_K = gen.Sphere();
 
     //save values in file
 
   }
-  
-  
   
   
   // Flat metric, (+ - - -) signature: m^2 = E^2 - p^2
