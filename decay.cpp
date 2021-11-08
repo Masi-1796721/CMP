@@ -60,26 +60,27 @@ int main() {
   double p_K = p_Pi;
   
   // Once I have the module of the momentum, I generate the random directions for te two particles
-  double point_Pi, point_K;
-  double *x, *y, *z, r=1, theta_Pi, phi_Pi, theta_K, phi_K;
+  double point_Pi, point_K, theta_Pi, phi_Pi, theta_K, phi_K;;
+  Double_t x, y, z, r=1; 
   
   // Loop on the 10000 events
   for(int i=0; i<nsig; ++i) {
 
     // Genarate random point in spherical coordinates for pion
     point_Pi = gen.Sphere(); //vedere che raggio mettere
-    theta_Pi = atan(*y / *x);
-    phi_Pi = acos(*z / r);
+    theta_Pi = atan(y / x);
+    phi_Pi = acos(z / r);
     cout<<""<<theta_Pi<<""<<phi_Pi<<endl;//per ora
     // Generate random point in spherical coordinates for kaon
     point_K = gen.Sphere();
-    theta_K = atan(*y / *x);
-    phi_K = (*z / r);
+    theta_K = atan(y / x);
+    phi_K = (z / r);
     cout<<""<<theta_K<<""<<phi_K<<endl;//per ora
 
     //save values in a file
     
-  } 
+  }
+  
   
   // Delete the random generator now we are done with it
   // [We had new, here is delete!]
