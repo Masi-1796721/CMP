@@ -61,23 +61,26 @@ int main() {
   double p_K = p_Pi;
   
   // Once I have the module of the momentum, I generate the random directions for te two particles
-  double point_Pi, point_K, theta_Pi, phi_Pi, theta_K, phi_K;;
-  Double_t x, y, z, r=1; 
+  double point_Pi, point_K, px, py, pz, E_Pi, E_K;
+
+  E_Pi = sqrt(p_Pi*p_Pi+m_Pi_2);
+  E_K = sqrt(p_K*p_K+m_K_2);
   
   // Loop on the 10000 events
   for(int i=0; i<nsig; ++i) {
 
-    // Genarate random point in spherical coordinates for pion
-    point_Pi = gen.Sphere(x,y,z,r); //vedere che raggio mettere
-    theta_Pi = atan(y / x);
-    phi_Pi = acos(z / r);
-    cout<<""<<theta_Pi<<""<<phi_Pi<<endl;//per ora
-    // Generate random point in spherical coordinates for kaon
-    point_K = gen.Sphere(x,y,z,r);
-    theta_K = atan(y / x);
-    phi_K = (z / r);
-    cout<<""<<theta_K<<""<<phi_K<<endl;//per ora
+    // Genarate random direction for pion
+    point_Pi = gen.Sphere(px,py,pz,p_Pi);
+    // Overwrite the 4-momentum vector for the pion
+    Pi.SetPxPyPzE(px, py, pz, E_Pi);
+    // Generate random direction for kaon
+    point_K = gen.Sphere(px,py,pz,p_K);
+    // Overwrite the 4-momentum vector for the kaon
+    K.SetPxPyPzE(px, py, pz, E_K);
 
+    // Boost the momenta to the lab reference frame
+    Pi.Boost(B.BoostVector());
+    K.Boost(B.BoostVector());
     //save values in a file
     
   }
@@ -86,20 +89,6 @@ int main() {
   // Delete the random generator now we are done with it
   // [We had new, here is delete!]
   delete gen;
-  
-  /*
-     Print to screen 4-momenta as we have them
-     As a reminder:
-     * Hadron colliders measure physical momenta in terms of momentum transverse
-       to the beam axis (z-axis); the TRANSVERSE MOMENTUM is denoted by p_T
-     * p_x = p_T * cos(phi) 
-       p_y = p_T * sin(phi) 
-       p_z = m_T * sinh(eta) 
-       E = m_T * cosh(eta) 
-       where m_T = sqrt(p_T^2 + m^2) is the TRANSVERSE MASS
-     * eta is the PSEUDORAPIDITY: eta = -ln[tan(theta/2)]; differences in eta
-       are Lorentz invariants under boosts along the longitudinal axis
-  */
 
 
   // Exit
