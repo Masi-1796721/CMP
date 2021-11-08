@@ -67,12 +67,12 @@ int main() {
   for(int i=0; i<nsig; ++i) {
 
     // Genarate random point in spherical coordinates for pion
-    point_Pi = gen.Sphere(); //vedere che raggio mettere
+    point_Pi = gen.Sphere(x,y,z,r); //vedere che raggio mettere
     theta_Pi = atan(y / x);
     phi_Pi = acos(z / r);
     cout<<""<<theta_Pi<<""<<phi_Pi<<endl;//per ora
     // Generate random point in spherical coordinates for kaon
-    point_K = gen.Sphere();
+    point_K = gen.Sphere(x,y,z,r);
     theta_K = atan(y / x);
     phi_K = (z / r);
     cout<<""<<theta_K<<""<<phi_K<<endl;//per ora
