@@ -1,6 +1,7 @@
 //randomly simulate 10^4 events -> I distinguish when generating random angles (?)
 
 #include <iostream>
+#include <cmath>
 
 // ROOT header files: Lorentz vector, random numbers, plotting, file storage
 
