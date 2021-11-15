@@ -119,8 +119,8 @@ int main() {
   // SMEARING SIMULATION
 
   // True magnitude of the momentum in the LAB
-  p_Pi_0= Pi.Px()*Pi.Px() + Pi.Py()*Pi.Py() + Pi.Pz()*Pi.Pz();
-  p_K_0 = K.Px()*K.Px() + K.Py()*K.Py() + K.Pz()*K.Pz();
+  p_Pi_0= sqrt(Pi.Px()*Pi.Px() + Pi.Py()*Pi.Py() + Pi.Pz()*Pi.Pz());
+  p_K_0 = sqrt(K.Px()*K.Px() + K.Py()*K.Py() + K.Pz()*K.Pz());
 
   // New random generator
   TRandom3*  gen = new TRandom3();
