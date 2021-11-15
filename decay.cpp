@@ -17,6 +17,8 @@ using std::endl;
 
 int main() {
 
+  // DECAY SIMULATION
+
   // Create B meson, pion and kaon
   TLorentzVector B; //particle object w position X(), Y(), Z(), T(), momentum Px(), Py(), Pz(), E()
   double m_B = 5.279; // GeV
@@ -113,6 +115,33 @@ int main() {
   angle.GetXaxis()->SetTitle( "Angle [rad]");
   angle.Draw();
   canv1.SaveAs("./opening-angle.pdf");
+
+  // SMEARING SIMULATION
+
+  // True magnitude of the momentum in the LAB
+  p_Pi_0= Pi.Px()*Pi.Px() + Pi.Py()*Pi.Py() + Pi.Pz()*Pi.Pz();
+  p_K_0 = K.Px()*K.Px() + K.Py()*K.Py() + K.Pz()*K.Pz();
+
+  // New random generator
+  TRandom3*  gen = new TRandom3();
+  gen->SetSeed(0);
+
+  // Detector parameters
+  double resol = 0.03; //resolution
+  double p_Pi_meas, p_K_meas; //measured values
+  
+  // Loop on the measurements
+  for(int i=0; i<nsig; ++i) {
+
+    // Generate measured values based on the true values and resolution
+    p_Pi_meas = gen->Gaus(p_Pi_0, p_Pi_0*resol);
+    p_K_meas = gen->Gaus(p_K_0, p_K_0*resol);
+    
+  }
+  
+  //delete generator
+  delete gen;
+  
   
   return 0;
   
