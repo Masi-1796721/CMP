@@ -57,7 +57,7 @@ int main() {
   double p_K = p_Pi;
   
   // Once I have the module of the momentum, I generate the random directions for te two particles
-  double px_Pi, py_Pi, pz_Pi, E_Pi, px_K, py_K, pz_K, E_K, E_CoM, psumx, psumy, psumz, Esum, Wt, Wm, theta;
+  double px_Pi, py_Pi, pz_Pi, E_Pi, px_K, py_K, pz_K, E_K, E_CoM, psumx, psumy, psumz, Esum, Wt, Wm, theta,  px_Pi_meas,  py_Pi_meas,  pz_Pi_meas,  E_Pi_meas,  px_K_meas,  py_K_meas,  pz_K_meas,  E_K_meas;
 
   // Calculate energy in the CoM frame
   E_Pi = sqrt(p_Pi*p_Pi+m_Pi_2);
